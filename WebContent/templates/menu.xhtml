@@ -1,0 +1,50 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<!--Navbar-->
+<nav class="navbar navbar-dark bg-primary teal lighten-3">
+
+    <!-- Collapse button-->
+    <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+        <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="container">
+
+        <!--Collapse content-->
+        <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+            <!--Navbar Brand-->
+            <a class="navbar-brand">ContactApplication</a>
+            <!--Links-->
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <a href="login.jsp" class="nav-link">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contacts.xhtml" class="nav-link">Mes contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a href="ajoutContact.jsp" class="nav-link">Ajouter un contact</a>
+                </li>
+                <li class="nav-item btn-group">
+                    <a class="nav-link dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Autre</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a href="projet.xhtml" class="dropdown-item">Projet</a>
+                    </div>
+                </li>
+            </ul>
+            <!--Search form-->
+            <form class="form-inline">
+                <input class="form-control" type="text" placeholder="Recherche"/>
+            </form>
+        </div>
+        <!--/.Collapse content-->
+
+    </div>
+
+</nav>
+<!--/.Navbar-->
+
+</ui:composition>

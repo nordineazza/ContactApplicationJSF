@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+      <!-- Mise en place des feuilles de style -->
+     <link rel="stylesheet" type="text/css" href="web/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/mdb.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/style.css" />
+     <!-- Import des bibliothèques JS -->
+     <script src="web/js/jquery-3.1.1.js"></script>
+     <script src="web/js/tether.js"></script>
+     <script src="web/js/bootstrap.js"></script>
+     <script src="web/js/mdb.js"></script>
+
+<h:head><title>ContactApplication: Page de connexion</title>
+</h:head>
+<h:body>
+<!-- Other HTML tags and non-input JSF elements here -->
+<ui:insert name="menu" >
+	<ui:include src="templates/menu.xhtml" />
+</ui:insert>
+<div class="container">
+<div class="card margin">
+	<h1 class="margin">Formulaire de connexion</h1>
+	
+	<h:form>
+	  <!-- This means bean named "yourBean" must have getYourProperty and setYourProperty -->
+	  
+	<div class="md-form">
+	    <h:inputText id="form1" class="form-control" />
+		<label for="form1" class="active">Login</label>
+	</div>
+
+	<div class="md-form">
+	    <h:inputSecret id="form2" class="form-control" />
+		<label for="form2" class="active">Mot de passe</label>
+	</div>
+	  <h:commandButton class="btn btn-block btn-info margin" value="Se connecter" />
+	</h:form>
+</div>
+</div>
+<!-- Other HTML tags and non-input JSF elements here -->
+</h:body></html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+      <!-- Mise en place des feuilles de style -->
+     <link rel="stylesheet" type="text/css" href="web/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/mdb.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/style.css" />
+     <!-- Import des bibliothèques JS -->
+     <script src="web/js/jquery-3.1.1.min.js"></script>
+     <script src="web/js/tether.min.js"></script>
+     <script src="web/js/bootstrap.min.js"></script>
+     <script src="web/js/mdb.min.js"></script>
+
+<h:head><title>ContactApplication: Ajout d'un contact</title>
+</h:head>
+<h:body>
+<ui:insert name="menu" >
+	<ui:include src="templates/menu.xhtml" />
+</ui:insert>
+<div class="container">
+	<div class="card margin">
+		<h1 class="margin">Ajouter un contact</h1>
+			<h:form>
+	         <fieldset>
+	         	<legend>Contact</legend>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="email" styleClass="col-form-label">Prénom <span class="requis">*</span></h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="firstname" styleClass="form-control" value="#{contactBean.contact.firstName}" required="true" size="20" maxlength="60">
+		            		<f:ajax event="blur" render="firstNameMessage" />
+		        		</h:inputText>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:message id="firstNameMessage" for="firstname" errorClass="erreur" />
+	         		</div>
+	         	</div>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="lastname" styleClass="col-form-label">Nom <span class="requis">*</span></h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="lastname" styleClass="form-control" value="#{contactBean.contact.lastName}" required="true" size="20" maxlength="60">
+		            		<f:ajax event="blur" render="lastNameMessage" />
+		        		</h:inputText>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:message id="lastNameMessage" for="lastname" errorClass="erreur" />
+	         		</div>
+	         	</div>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="email" styleClass="col-form-label">E-mail <span class="requis">*</span></h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="email" value="#{contactBean.contact.email}" required="true" size="20" maxlength="60">
+		            		<f:ajax event="blur" render="emailMessage" />
+		        		</h:inputText>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:message id="emailMessage" for="email" errorClass="erreur" />
+	         		</div>
+	         	</div>			  
+			  </fieldset>
+			  <fieldset>
+			  <legend>Adresse</legend>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="adresse">Adresse</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="adresse" styleClass="form-control" value="#{contactBean.adresse.street}" />
+	         		</div>
+	         	</div>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="ville">Ville</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="ville" styleClass="form-control" value="#{contactBean.adresse.city}" />
+	         		</div>
+	         	</div>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="zip">Code postal</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="zip" styleClass="form-control" value="#{contactBean.adresse.zip}" />
+	         		</div>
+	         	</div>			  
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="pays">Pays</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="pays" styleClass="form-control" value="#{contactBean.adresse.country}" />
+	         		</div>
+	         	</div>			  
+			  </fieldset>
+			  <fieldset>
+			  <legend>Numéro de téléphone</legend>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="phoneNumber">Numéro de téléphone</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="phoneNumber" styleClass="form-control" value="#{contactBean.phoneNumber.phoneNumber}" />
+	         		</div>
+	         	</div>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="phoneKind">Type</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="phoneKind" styleClass="form-control" value="#{contactBean.phoneNumber.phoneKind}" />
+	         		</div>
+	         	</div>
+			  </fieldset>
+			  <fieldset>
+			  <legend>Groupe</legend>
+	         	<div class="row form-group">
+	         		<div class="col-md-2">
+	         			<h:outputLabel for="contactGroup">Groupe</h:outputLabel>
+	         		</div>
+	         		<div class="col-md-5">
+	         			<h:inputText id="contactGroup" styleClass="form-control" value="#{contactBean.contactGroup.groupName}" />
+	         		</div>
+	         	</div>
+			  </fieldset>
+
+			  <h:commandButton class="btn btn-block btn-info margin" value="Ajouter contact" action="#{contactBean.ajouterContact}"/>
+			  
+			</h:form>
+		
+	</div>
+</div>
+</h:body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+      <!-- Mise en place des feuilles de style -->
+     <link rel="stylesheet" type="text/css" href="web/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/mdb.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/style.css" />
+     <!-- Import des bibliothèques JS -->
+     <script src="web/js/jquery-3.1.1.js"></script>
+     <script src="web/js/tether.js"></script>
+     <script src="web/js/bootstrap.js"></script>
+     <script src="web/js/mdb.js"></script>
+	 <script type="text/javascript" src="https://cdn.rawgit.com/mikeflynn/egg.js/master/egg.min.js"></script>
+	<script>
+		function barrel_roll() {
+		    $('body').addClass('barrel_roll');
+		  setTimeout("$('body').removeClass('barrel_roll')", 4000);
+		}
+		var egg = new Egg("up,up,down,down,left,right,left,right", function() {
+			  $('.easter-toggle').toggle();
+			  barrel_roll();
+			}).listen();
+	</script>
+
+<h:head><title>ContactApplication: Projet</title>
+</h:head>
+<h:body>
+<!-- Other HTML tags and non-input JSF elements here -->
+<ui:insert name="menu" >
+	<ui:include src="templates/menu.xhtml" />
+</ui:insert>
+
+<div class="container easter-toggle" style="display:none">
+<div class="card">
+	<h1 class="margin">Easter Egg</h1>
+	<center><img src="web/img/easter.jpg" /></center>
+</div>
+</div>
+<div class="container easter-toggle">
+<div class="card">
+	<h1 class="margin">Projet JEE</h1>
+	<h4>Github</h4>
+    <p>Un espace github a été mis en place <a href="https://github.com/nordineazza/ContactApplication" target="_blank">ici</a>.</p> 
+	<div class="view hm-zoom">
+		<img src="web/img/github-logo.png" class="img-fluid " alt="" width="600"/>
+	</div>
+       
+	<h4 style="margin-top:30px">Groupe</h4>
+	<p class="card-text">Ce projet a été réalisé par AZZA Nordine, <abbr title="Le puissant">DOUCOURE Foulé</abbr> et JEYKUMAR Niverajh.</p>
+	<p class="card-text">Les technologies utilisés sont: 
+	<ol>
+		<li><abbr title="Java Server Faces">JSF</abbr> 2.0</li>
+		<li><abbr title="Java DataBase Connectivity">JDBC</abbr></li>
+		<li>Framework front (Bootstrap, <abbr title="Material Design for Bootstrap">MDB</abbr>)</li>
+		<li>jQuery, sweetAlert</li>
+		<li>Une base de donnée mySQL</li></ol>
+	</p>
+	
+</div>
+</div>
+
+</h:body>
+</html>

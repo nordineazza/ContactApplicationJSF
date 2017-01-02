@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+      
+      <!-- Mise en place des feuilles de style -->
+     <link rel="stylesheet" type="text/css" href="web/css/bootstrap.min.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/mdb.css" />
+     <link rel="stylesheet" type="text/css"
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+     <link rel="stylesheet" type="text/css" href="web/css/style.css" />
+     <!-- Import des bibliothèques JS -->
+     <script src="web/js/jquery-3.1.1.js"></script>
+     <script src="web/js/tether.js"></script>
+     <script src="web/js/bootstrap.js"></script>
+     <script src="web/js/mdb.js"></script>
+	<script>
+		function ajoutAdresse(){
+			var str = '<div class="row">'
+			+ '<div class="col-md-3">'
+			+ '<input type="text" placeholder="Adresse" value="#{adresseBean.adresse.street}"/>'
+			+ '</div>'
+			+ '<div class="col-md-3">'
+			+ '<input type="text" placeholder="Ville" value="#{adresseBean.adresse.city}"/>'
+			+ '</div>'
+			+ '<div class="col-md-2">'
+			+ '<input type="text" placeholder="Code postal" value="#{adresseBean.adresse.zip}"/>'
+			+ '</div>'
+			+ '<div class="col-md-2">'
+			+ '<input type="text" placeholder="Pays" value="#{adresseBean.adresse.country}"/>'
+			+ '</div>'
+			+ '<div class="col-md-2">'
+			+ '<button class="btn btn-pink btn-remove" onclick="supprimerLigne(this)"><span class="fa fa-minus"></span></button>'
+			+ '<button class="btn btn-light-green btn-remove" onclick="#{adresseBean.ajouterAdresse(param.id)}"><span class="fa fa-check"></span></button>'
+			+ '</div></div>';
+			$('#adresse').append(str);
+		}
+		function ajoutNumero(){
+			var str = '<div class="row">'
+			+ '<div class="col-md-2">'
+			+ '<select class="form-control"><option value="Portable">Portable</option><option value="Fixe">Fixe</option></select>'
+			+ '</div>'
+			+ '<div class="col-md-3">'
+			+ '<input type="text" placeholder="Numéro de téléphone"/>'
+			+ '</div>'
+			+ '<div class="col-md-2">'
+			+ '<button class="btn btn-amber btn-remove" onclick="supprimerLigne(this)"><span class="fa fa-minus"></span></button>'
+			+ '<button class="btn btn-light-green btn-remove"><span class="fa fa-check"></span></button>'
+			+ '</div></div>';
+			$('#phonenumber').append(str);
+		}
+		function supprimerLigne(elem){
+			$(elem).closest('.row').hide('slow').remove();
+		}
+	</script>
+<h:head><title>ContactApplication: Contact</title>
+</h:head>
+<h:body>
+<!-- Other HTML tags and non-input JSF elements here -->
+<ui:insert name="menu" >
+	<ui:include src="templates/menu.xhtml" />
+</ui:insert>
+<ui:param name="contact" value="#{contactBean.getContactById(param.id)}" />
+
+<div class="col-md-3">
+<!--Card-->
+<div class="card">
+
+    <!--Card image-->
+    <img class="img-fluid" src="web/img/profile.png" alt="Image anonyme"/>
+    <!--/.Card image-->
+
+    <!--Card content-->
+    <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">#{contact.firstName} #{contact.lastName}</h4>
+        <!--Text-->
+        <p class="card-text">#{contact.email}</p>
+        <p class="card-text">Relation: #{contact.contactGroup.groupName}</p>
+        <a href="#" class="btn btn-cyan">Modifier</a>
+
+    </div>
+    <!--/.Card content-->
+
+</div>
+<!--/.Card-->
+</div>
+
+<div class="col-md-9">
+<!--Card-->
+<div class="card">
+
+    <!--Card content-->
+    <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">Adresse(s)</h4>
+        <ui:repeat value="#{contact.getAdresses()}" var="adresse">
+        <!--Text-->
+        <p class="card-text">#{adresse.street}</p>
+        <p class="card-text">#{adresse.zip} #{adresse.city}</p>
+        <p class="card-text">#{adresse.country}</p>
+        <hr/>
+        </ui:repeat>
+        <a class="btn btn-cyan" onclick="ajoutAdresse()">Ajouter une adresse</a>
+        <div id="adresse"></div>
+    </div>
+    <!--/.Card content-->
+
+</div>
+<!--/.Card-->
+</div>
+<div class="col-md-9">
+<!--Card-->
+<div class="card">
+
+    <!--Card content-->
+    <div class="card-block">
+        <!--Title-->
+        <h4 class="card-title">Numéro(s) de téléphone</h4>
+        <ui:repeat value="#{contact.getPhoneNumbers()}" var="phone">
+        <!--Text-->
+        <p class="card-text">
+        <h:graphicImage rendered="${phone.phoneKind == 'Portable'}" 
+        value = "web/img/smartphone.jpg" width="25" styleClass="img-phone">
+		</h:graphicImage>
+		<h:graphicImage rendered="${phone.phoneKind == 'Fixe'}" 
+        value = "web/img/fixe.png" width="25" styleClass="img-phone">
+		</h:graphicImage>
+		#{phone.phoneNumber}</p>
+		<hr/>
+        </ui:repeat>
+        <a class="btn btn-cyan" onclick="ajoutNumero()">Ajouter un numéro</a>
+        <div id="phonenumber"></div>
+    </div>
+    <!--/.Card content-->
+
+</div>
+<!--/.Card-->
+</div>
+
+</h:body>
+</html>

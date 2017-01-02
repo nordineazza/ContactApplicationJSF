@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<h:head>
+	<title>ContactApplication: Liste des contacts</title>
+	<!-- Mise en place des feuilles de style -->
+	<link rel="stylesheet" type="text/css" href="web/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="web/css/mdb.css" />
+	<link rel="stylesheet" type="text/css" href="web/css/style.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://cdn.jsdelivr.net/sweetalert2/5.0.7/sweetalert2.min.css" />
+
+	<!-- Import des bibliothèques JS -->
+	<script src="web/js/jquery-3.1.1.min.js"></script>
+	<script src="web/js/tether.min.js"></script>
+	<script src="web/js/bootstrap.min.js"></script>
+	<script src="web/js/mdb.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/sweetalert2/5.0.7/sweetalert2.js"></script>
+	<script src="web/js/myjs.js"></script>
+</h:head>
+<body>
+	<ui:insert name="menu">
+		<ui:include src="templates/menu.xhtml" />
+	</ui:insert>
+
+	<ui:repeat value="#{contactBean.listeContact()}" var="contact">
+		<div class="col-md-2">
+			<div class="card">
+				<!--Card image-->
+				<div class="view overlay hm-white-slight">
+					<img src="web/img/profile.png" class="img-fluid" alt="" /> <a
+						href="#">
+						<div class="mask" />
+					</a>
+				</div>
+				<!--/.Card image-->
+
+				<div class="card-block">
+					<h4 class="card-title">
+						<a href="contact.xhtml?id=#{contact.id}">#{contact.firstName}
+							#{contact.lastName}</a>
+					</h4>
+					<p class="card-text p-email">#{contact.email}</p>
+					<center>
+						<a class="update-icon" href="#"><span class="fa fa-pencil"></span></a>
+						<a class="trash-icon"
+							onclick="supprimerContact(this, #{contact.id})"> <span
+							class="fa fa-trash"></span>
+						</a>
+						<h:form>
+							<h:commandButton value="test" onclick="return supprimerContact(event)"
+								actionListener="#{contactBean.supprimerContact(contact.id)}"></h:commandButton>
+						</h:form>
+					</center>
+				</div>
+			</div>
+		</div>
+	</ui:repeat>
+</body>
+</html>

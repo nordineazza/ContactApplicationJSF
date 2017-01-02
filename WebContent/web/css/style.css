@@ -1,0 +1,55 @@
+/* YOUR CUSTOM STYLES */
+
+.navbar{
+	margin-bottom: 30px;
+}
+.margin{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+.card{
+	padding: 20px;
+}
+
+.error{
+	color: red;
+}
+
+.update-icon{
+	margin-right: 10px;
+	color: #0099CC !important;
+}
+
+.trash-icon{
+	color:#CC0000 !important;
+}
+
+.update-icon:hover{
+	color: #33b5e5 !important;
+}
+.trash-icon:hover{
+	color: #ff4444 !important;
+}
+.img-phone{
+	margin-right: 15px;
+	float: left;
+}
+.p-email{
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.btn-remove{
+	padding: 8px !important;
+}
+.barrel_roll {
+    -webkit-transition: -webkit-transform 4s ease;
+    -webkit-transform: rotate(360deg);
+    -moz-transition: -moz-transform 4s ease;
+    -moz-transform: rotate(360deg);
+    -o-transition: -o-transform 4s ease;
+    -o-transform: rotate(360deg);
+    transition: transform 4s ease;
+    transform: rotate(360deg);
+}  
